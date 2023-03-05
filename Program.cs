@@ -1,4 +1,14 @@
+using Microsoft.EntityFrameworkCore;
+using Ejercicios.DataAcces;
 var builder = WebApplication.CreateBuilder(args);
+
+//Conexcion a la base de datos
+string CONNECTIONNAME = "University";
+var connectionString = builder.Configuration.GetConnectionString(CONNECTIONNAME);
+
+// Conectamos a la base de datos
+builder.Services.AddDbContext<UniversityContext>(options =>
+options.UseNpgsql(connectionString));
 
 // Add services to the container.
 
